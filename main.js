@@ -27,11 +27,9 @@ function modelLoaded(){
     console.log("posnet is initialized");
 }
 
-function getPoses(error,results){
-    if(error){
-        console.error(error);
-    }
-    else{
+function getPoses(results){
+    if(results.length > 0){
+    
         console.log(results);
 
         leftWristY = results [0].pose.leftWrist.y;
