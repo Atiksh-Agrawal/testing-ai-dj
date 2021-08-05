@@ -1,0 +1,60 @@
+body{
+  background-image: url("background.jpg");
+  background-size: cover;
+}
+
+.header{
+    font-size: 25px;
+}
+
+.header span{
+   color: red;
+}
+
+.btn-lg{
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.speed{
+    float: left;
+}
+
+.divImg{
+    height: 300px;
+    width: 300px;
+    border-radius: 200px;
+}
+
+#speed_value , #volume_value{
+    font-size: 25px;
+    margin: 15px;
+}
+
+.volume{
+    float: right;
+}
+
+@keyframes shadow-effect{
+    0%{
+      box-shadow: 5px 5px 20px red;
+    }
+
+    25%{
+      box-shadow:5px 5px 20px yellow;
+    }
+
+    50%{
+      box-shadow:5px 5px 20px green;
+    }
+
+    75%{
+      box-shadow:5px 5px 20px skyblue;
+    }
+
+    100%{
+      box-shadow: violet;
+    }
+  }
