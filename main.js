@@ -31,7 +31,7 @@ function draw(){
 
     volume = removeDecimals/500;
 
-    document.getElementById("volume").innerHTML = "Volume = "+volume;
+    document.getElementById("volume_value").innerHTML = "Volume = "+volume;
     song.setVolume(volume); 
 }
 
