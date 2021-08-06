@@ -21,6 +21,18 @@ function setup(){
 
 function draw(){
     image(video,0,0,600,500);
+
+    fill("red");
+    stroke("red");
+    circle(leftWristX,leftWristY,20);
+
+    numberLeftWristY = Number(leftWristY);
+    removeDecimals = floor(numberLeftWristY);
+
+    volume = removeDecimals/500;
+
+    document.getElementById("volume").innerHTML = "Volume = "+volume;
+    song.setVolume(volume); 
 }
 
 function modelLoaded(){
@@ -44,7 +56,6 @@ function getPoses(results){
 
 function playMusic(){
     song.play();
-    song.setVolume(1);
     song.rate(1);
 }
 
