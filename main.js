@@ -1,9 +1,11 @@
 song = "";
 leftWristY = 0;
 leftWristX = 0;
+scoreLeftWrist = 0;
 
 rightWristY = 0;
 rightWristX = 0;
+scoreRightWrist = 0;
 
 function preload(){
 song = loadSound("music.mp3");
@@ -24,15 +26,49 @@ function draw(){
 
     fill("red");
     stroke("red");
-    circle(leftWristX,leftWristY,20);
+    
+    if(scoreLeftWrist > 0.2){
 
-    numberLeftWristY = Number(leftWristY);
-    removeDecimals = floor(numberLeftWristY);
+        circle(leftWristX,leftWristY,20);
 
-    volume = removeDecimals/500;
+        numberLeftWristY = Number(leftWristY);
+        removeDecimals = floor(numberLeftWristY);
+    
+        volume = removeDecimals/500;
+    
+        document.getElementById("volume_value").innerHTML = "Volume = "+volume;
+        song.setVolume(volume);  
+    }
 
-    document.getElementById("volume_value").innerHTML = "Volume = "+volume;
-    song.setVolume(volume); 
+    if(scoreRightWrist > 0.2){
+        circle(rightWristX,rightWristY,20);
+        
+        if(rightWristY > 0 && rightWristY <= 100){
+            document.getElementById("speed_value").innerHTML = "Speed = 0.5x";
+            song.rate(0.5);
+        }
+
+        else if(rightWristY > 100 && rightWristY <= 200){
+            document.getElementById("speed_value").innerHTML = "Speed = 1x";
+            song.rate(1);
+        }
+
+        else if(rightWristY > 200 && rightWristY <= 300){
+            document.getElementById("speed_value").innerHTML = "Speed = 1.5x";
+            song.rate(1.5);
+        }
+
+        else if(rightWristY > 300 && rightWristY <= 400){
+            document.getElementById("speed_value").innerHTML = "Speed = 2x";
+            song.rate(2);
+        }
+
+        else if(rightWristY > 400 && rightWristY <= 500){
+            document.getElementById("speed_value").innerHTML = "Speed = 2.5x";
+            song.rate(2.5);
+        }
+    }
+    
 }
 
 function modelLoaded(){
@@ -43,6 +79,8 @@ function getPoses(results){
     if(results.length > 0){
     
         console.log(results);
+        scoreLeftWrist = results[0].pose.keypoints[9].score;
+        scoreRightWrist = results[0].pose.keypoints[10].score;
 
         leftWristY = results [0].pose.leftWrist.y;
         leftWristX = results [0].pose.leftWrist.x;
